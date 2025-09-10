@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MigrantCare+ | Create Account</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h1 class="form-title">MigrantCare+ Registration</h1>
+
+<form id="createAccountForm" onsubmit="event.preventDefault(); window.location.href='profile.html';">
+
+      
+      <!-- Personal Details -->
+      <h2 class="section-title">Personal Details</h2>
+      <label>Full Name</label>
+      <input type="text" name="fullname" required>
+
+      <label>Age</label>
+      <input type="number" name="age" required>
+
+      <label>Date of Birth</label>
+      <input type="date" name="dob" required>
+
+      <label>Gender</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
+
+      <label class="section-title">Marital Status</label>
+<div class="radio-group">
+  <label>
+    <input type="radio" name="marital_status" value="married" required> Married
+  </label>
+  <label>
+    <input type="radio" name="marital_status" value="unmarried" required> Unmarried
+  </label>
+</div>
+
+
+      <!-- Contact Details -->
+      <h2 class="section-title">Contact Details</h2>
+      <label>Phone Number</label>
+      <input type="tel" name="phone" required>
+
+      <label>Email ID</label>
+      <input type="email" name="email" required>
+      <!-- Member ID & Password Setup -->
+<h2 class="section-title">Account Setup</h2>
+
+<label>Member ID <small>(Use Firstname + Year of Birth)</small></label>
+<input type="text" name="member_id" required>
+
+<label>New Password</label>
+<input type="password" id="new_password" name="new_password" required>
+
+<label>Confirm Password</label>
+<input type="password" id="confirm_password" name="confirm_password" required>
+<p id="password_status" class="status-text"></p>
+
+      <!-- Family Details -->
+      <h2 class="section-title">Family Details</h2>
+      <label>Father's Name</label>
+      <input type="text" name="father">
+
+      <label>Mother's Name</label>
+      <input type="text" name="mother">
+
+      <label>Father's Contact No.</label>
+      <input type="tel" name="father_phone">
+
+      <label>Mother's Contact No.</label>
+      <input type="tel" name="mother_phone">
+
+      <!-- Identity & Health -->
+      <h2 class="section-title">Identity & Health</h2>
+      <label>Nationality</label>
+      <input type="text" name="nationality">
+
+      <label>Identity Marks</label>
+      <input type="text" name="identity_marks">
+
+      <label>Blood Group</label>
+      <input type="text" name="blood_group">
+
+      <label>Health Issues (if any)</label>
+      <input type="text" name="health_issues">
+
+      <label>Aadhar ID No.</label>
+      <input type="text" name="aadhar">
+
+      <!-- Nominee Details -->
+<h2 class="section-title">Nominee Details</h2>
+
+<label>Nominee Name</label>
+<input type="text" name="nominee_name" required>
+
+<label>Nominee Age</label>
+<input type="number" name="nominee_age" required>
+
+<label>Relationship</label>
+<select name="nominee_relationship" required>
+  <option value="">-- Select Relationship --</option>
+  <option value="Guardian">Guardian</option>
+  <option value="Husband/Wife">Husband / Wife</option>
+  <option value="Son/Daughter">Son / Daughter</option>
+  <option value="Contractor">Contractor</option>
+  <option value="Sibling">Sibling</option>
+  <option value="Others">Others</option>
+</select>
+
+<label>Nominee Address</label>
+<textarea name="nominee_address"></textarea>
+
+<label>Contact No. (1)</label>
+<input type="tel" name="nominee_contact1" required>
+
+<label>Contact No. (2)</label>
+<input type="tel" name="nominee_contact2">
+
+<label>Aadhar No.</label>
+<input type="text" name="nominee_aadhar">
+
+<label>Email (Optional)</label>
+<input type="email" name="nominee_email">
+
+      <!-- Work & Insurance -->
+      <h2 class="section-title">Work & Insurance</h2>
+      <label>Type of Work</label>
+      <input type="text" name="work_type">
+
+      <label>Work Permit ID</label>
+      <input type="text" name="work_permit">
+
+      <label>Insurance No.</label>
+      <input type="text" name="insurance_no">
+
+      <label>Insurance Validity</label>
+      <input type="date" name="insurance_validity" id="insurance_validity">
+      <p id="insurance_status" class="status-text"></p>
+
+      <label>Permanent Address</label>
+      <textarea name="permanent_address"></textarea>
+
+      <label>Residential Address</label>
+      <textarea name="residential_address"></textarea>
+
+      <label>Office Address</label>
+      <textarea name="office_address"></textarea>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit" class="btn primary">Submit</button>
+        <button type="reset" class="btn secondary">Clear</button>
+        <br>
+      </div>
+      <p class="back-link" style="text-align:end; margin-top:2rem;">
+      <a href="index.html">← Back to Login</a>
+    </p>
+    </form>
+  </div>
+  <script>
+  const newPassword = document.getElementById("new_password");
+  const confirmPassword = document.getElementById("confirm_password");
+  const passwordStatus = document.getElementById("password_status");
+
+  confirmPassword.addEventListener("input", () => {
+    if (newPassword.value !== confirmPassword.value) {
+      passwordStatus.textContent = "⚠️ Password is not matching";
+      passwordStatus.style.color = "red";
+    } else {
+      passwordStatus.textContent = "✅ Passwords match";
+      passwordStatus.style.color = "green";
+    }
+  });
+</script>
+
+
+  <script>
+    const insuranceInput = document.getElementById("insurance_validity");
+    const statusText = document.getElementById("insurance_status");
+
+    insuranceInput.addEventListener("change", () => {
+      const enteredDate = new Date(insuranceInput.value);
+      const today = new Date();
+      if (enteredDate < today) {
+        statusText.textContent = "⚠️ Insurance Expired";
+        statusText.style.color = "red";
+      } else {
+        statusText.textContent = "✅ Insurance Valid";
+        statusText.style.color = "green";
+      }
+    });
+  </script>
+</body>
+</html>
